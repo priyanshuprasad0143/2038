@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2038 Grid Stock - Own the Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #6a1b9a, #8e24aa);
+      padding: 30px 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    .container {
+      padding: 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(40, 15px);
+      grid-template-rows: repeat(40, 15px);
+      gap: 2px;
+      justify-content: center;
+      margin: 30px auto;
+      background-color: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .pixel {
+      width: 15px;
+      height: 15px;
+      background-color: #ddd;
+      border-radius: 3px;
+      transition: 0.2s;
+    }
+    .pixel:hover {
+      background-color: #a0d4ff;
+      cursor: pointer;
+    }
+    .pixel.sold {
+      background-color: #4caf50;
+      cursor: not-allowed;
+    }
+    footer {
+      background-color: #6a1b9a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    .note {
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>2038 Grid Stock</h1>
+    <p>Buy pixels. Own a space in the future digital economy.</p>
+  </header>  <div class="container">
+    <div class="grid-container" id="grid"></div>
+    <div class="note">Click a pixel to purchase it for ₹2000</div>
+  </div>  <footer>
+    &copy; 2025 2038 Grid Stock | Connect: hello@2038grid.in
+  </footer>  <script>
+    const grid = document.getElementById('grid');
+    const gridSize = 1000 * 1000; // 1000000 pixels demo
+
+    for (let i = 0; i < gridSize; i++) {
+      const pixel = document.createElement('div');
+      pixel.classList.add('pixel');
+
+      pixel.addEventListener('click', () => {
+        if (!pixel.classList.contains('sold')) {
+          const confirmBuy = confirm("Do you want to buy this pixel for ₹2000?");
+          if (confirmBuy) {
+            pixel.classList.add('sold');
+            pixel.title = "Sold";
+            alert("Pixel purchased successfully! (Demo only)");
+          }
+        } else {
+          alert("This pixel is already sold.");
+        }
+      });
+
+      grid.appendChild(pixel);
+    }
+  </script></body>
+</html>
